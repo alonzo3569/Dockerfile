@@ -1,0 +1,2 @@
+#!/bin/bash
+docker run -it --privileged --name test_image -p 6060:80 alonzo3569/vnc-bionic:melodic_moos
