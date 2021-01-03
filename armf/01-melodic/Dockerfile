@@ -1,4 +1,4 @@
-FROM ros:melodic-ros-base-bionic
+FROM arm32v7/ros:melodic-ros-base-bionic
 
 ENV DEBIAN_FRONTEND noninteractive
 
