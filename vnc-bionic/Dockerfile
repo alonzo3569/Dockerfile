@@ -34,7 +34,6 @@ python-wstool build-essential \
 ros-melodic-joint-state-publisher-gui # for rviz
 
 # rosdep init 
-python-rosdep
 RUN rosdep init
 RUN rosdep update
 
