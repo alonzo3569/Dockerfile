@@ -25,17 +25,16 @@ ibfltk1.3-dev  freeglut3-dev  libpng-dev  libjpeg-dev \
 libxft-dev  libxinerama-dev   libtiff5-dev 
 
 # clone ivp and 
+WORKDIR /root
 RUN svn co https://oceanai.mit.edu/svn/moos-ivp-aro/trunk/ moos-ivp
 
 # update to latest version
 WORKDIR /root/moos-ivp
-RUN svn update
+#RUN svn update #error
 
 # build
-WORKDIR /root/moos-ivp
-RUN ./build-moos.sh
-RUN ./build-ivp.sh
+RUN ./build.sh
 
 # add path to .bashrc
 WORKDIR /root
-RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
+RUN echo "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
