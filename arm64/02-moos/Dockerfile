@@ -30,7 +30,7 @@ RUN svn co https://oceanai.mit.edu/svn/moos-ivp-aro/trunk/ moos-ivp
 
 # update to latest version
 WORKDIR /root/moos-ivp
-#RUN svn update #error
+RUN svn update 
 
 # build
 RUN ./build.sh
