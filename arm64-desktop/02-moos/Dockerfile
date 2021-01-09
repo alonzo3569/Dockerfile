@@ -1,6 +1,7 @@
 FROM arm64v8/ubuntu:bionic
 
 ENV DEBIAN_FRONTEND noninteractive
+CMD /bin/bash # Replacing CMD in base image
 
 ####################################
 #            Debian pkg            #        
@@ -18,7 +19,7 @@ psmisc  # killall
 RUN apt-get update && apt-get install -y dirmngr
 
 # update source list and keyserver
-RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list'
 RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 
 # apt-get update again after changing source list and key
@@ -48,17 +49,16 @@ ibfltk1.3-dev  freeglut3-dev  libpng-dev  libjpeg-dev \
 libxft-dev  libxinerama-dev   libtiff5-dev 
 
 # clone ivp and 
+WORKDIR /root
 RUN svn co https://oceanai.mit.edu/svn/moos-ivp-aro/trunk/ moos-ivp
 
 # update to latest version
 WORKDIR /root/moos-ivp
-RUN svn update
+RUN svn update 
 
 # build
-WORKDIR /root/moos-ivp
-RUN ./build-moos.sh
-RUN ./build-ivp.sh
+RUN ./build.sh
 
 # add path to .bashrc
 WORKDIR /root
-RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
+RUN echo "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
