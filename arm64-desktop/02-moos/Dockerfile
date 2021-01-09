@@ -8,7 +8,7 @@ CMD /bin/bash # Replacing CMD in base image
 ####################################
 RUN apt update && apt install -y vim \
 terminator \
-psmisc  # killall
+psmisc # killall
 
 
 ####################################
