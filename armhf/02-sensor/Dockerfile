@@ -23,7 +23,7 @@ RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc
 
 # python module serial
 RUN apt install -y python-pip 
-RUN pip install pyserial 
+RUN pip install -y pyserial 
 
 # IMU dependencies
 
