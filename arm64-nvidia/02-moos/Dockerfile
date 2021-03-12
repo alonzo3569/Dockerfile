@@ -38,7 +38,10 @@ RUN apt-get install -y python-rosdep \
 python-rosinstall \
 python-rosinstall-generator \
 python-wstool build-essential \
-ros-melodic-joint-state-publisher-gui # for rviz
+ros-melodic-geodesy \
+ros-melodic-joint-state-publisher-gui 
+# joint-state-publisher for rviz
+# geodesy for robot localization
 
 # rosdep init 
 RUN rosdep init
