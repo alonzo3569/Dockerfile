@@ -29,4 +29,7 @@ RUN pip install -y pyserial
 
 # module tf
 RUN apt install -y ros-melodic-tf
+# arduino
+RUN apt install -y ros-melodic-rosserial
+
 
