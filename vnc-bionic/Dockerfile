@@ -31,6 +31,8 @@ RUN apt-get install -y python-rosdep \
 python-rosinstall \
 python-rosinstall-generator \
 python-wstool build-essential \
+ros-melodic-rosserial \
+ros-melodic-rosserial-arduino \
 ros-melodic-joint-state-publisher-gui # for rviz
 
 # rosdep init 
