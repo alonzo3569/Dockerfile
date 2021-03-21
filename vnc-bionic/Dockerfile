@@ -6,7 +6,9 @@ FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 #            Debian pkg            #        
 ####################################
 RUN apt-get update && apt-get install -y vim \
+iputils-ping \
 terminator 
+# iputils-ping for ping
 
 
 ####################################
@@ -33,7 +35,9 @@ python-rosinstall-generator \
 python-wstool build-essential \
 ros-melodic-rosserial \
 ros-melodic-rosserial-arduino \
-ros-melodic-joint-state-publisher-gui # for rviz
+ros-melodic-joint-state-publisher-gui
+# rosserial, rosserial-arduino for arduino
+# joint-state-publisher-gui for rviz
 
 # rosdep init 
 RUN rosdep init
@@ -64,3 +68,4 @@ RUN ./build-ivp.sh
 # add path to .bashrc
 WORKDIR /root
 RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
+RUN echo -e ". /root/catkin_ws/devel/setup.bash" >> ./.bashrc
