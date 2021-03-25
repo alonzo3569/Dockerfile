@@ -14,6 +14,7 @@ terminator   \
 net-tools    \
 nmap         \
 iputils-ping \
+libasound2-dev \
 psmisc
 
 ####################################
