@@ -17,7 +17,9 @@ iputils-ping \
 libasound2-dev \
 alsa \
 python-pip \
+librapidxml-dev \
 psmisc
+# librapidxml-dev for moos-ros-bridge
 
 ####################################
 #              ROS                 #    
