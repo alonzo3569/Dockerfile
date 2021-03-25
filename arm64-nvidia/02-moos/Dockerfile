@@ -15,6 +15,8 @@ net-tools    \
 nmap         \
 iputils-ping \
 libasound2-dev \
+alsa \
+python-pip \
 psmisc
 
 ####################################
