@@ -7,8 +7,15 @@ FROM dorowu/ubuntu-desktop-lxde-vnc:bionic
 ####################################
 RUN apt-get update && apt-get install -y vim \
 iputils-ping \
+net-tools    \
+nmap         \
+libasound2-dev \
+alsa \
+python-pip \
+librapidxml-dev \
 terminator 
 # iputils-ping for ping
+# librapidxml-dev for moos-ros-bridge
 
 
 ####################################
@@ -69,3 +76,4 @@ RUN ./build-ivp.sh
 WORKDIR /root
 RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
 RUN echo -e ". /root/catkin_ws/devel/setup.bash" >> ./.bashrc
+RUN echo -e ". /root/vnc-bionic/catkin_ws/devel/setup.bash" >> ./.bashrc
