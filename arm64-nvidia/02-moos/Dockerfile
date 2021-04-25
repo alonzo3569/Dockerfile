@@ -18,6 +18,7 @@ libasound2-dev \
 alsa \
 python-pip \
 librapidxml-dev \
+python-pyaudio \
 psmisc
 # librapidxml-dev for moos-ros-bridge
 
