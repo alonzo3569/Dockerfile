@@ -78,4 +78,6 @@ RUN ./build.sh
 # add path to .bashrc
 WORKDIR /root
 RUN echo "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
-RUN echo -e ". /root/arm64-nvidia/catkin_ws/devel/setup.bash" >> ./.bashrc
+RUN echo ". /root/arm64-nvidia/catkin_ws/devel/setup.bash" >> ./.bashrc
+RUN echo "export ROS_IP=192.168.0.100" >> ./.bashrc   
+RUN echo "export ROS_MASTER_URI=http://192.168.0.167:11311" >> ./.bashrc
