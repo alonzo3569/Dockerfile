@@ -13,6 +13,7 @@ libasound2-dev \
 alsa \
 python-pip \
 librapidxml-dev \
+iperf3 \
 terminator 
 # iputils-ping for ping
 # librapidxml-dev for moos-ros-bridge
@@ -75,5 +76,4 @@ RUN ./build-ivp.sh
 # add path to .bashrc
 WORKDIR /root
 RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
-RUN echo -e ". /root/catkin_ws/devel/setup.bash" >> ./.bashrc
 RUN echo -e ". /root/vnc-bionic/catkin_ws/devel/setup.bash" >> ./.bashrc
