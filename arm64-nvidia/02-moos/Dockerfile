@@ -8,6 +8,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # net-tools for ifconfig
 # iputils-ping for ping
 # psmisc for killall 
+# librapidxml-dev for moos-ros-bridge
 
 RUN apt update && apt install -y vim \
 terminator   \
@@ -19,8 +20,9 @@ alsa \
 python-pip \
 librapidxml-dev \
 python-pyaudio \
+iperf3 \
 psmisc
-# librapidxml-dev for moos-ros-bridge
+
 
 ####################################
 #              ROS                 #    
@@ -76,3 +78,4 @@ RUN ./build.sh
 # add path to .bashrc
 WORKDIR /root
 RUN echo "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
+RUN echo -e ". /root/arm64-nvidia/catkin_ws/devel/setup.bash" >> ./.bashrc
