@@ -21,35 +21,45 @@ python-pip \
 librapidxml-dev \
 python-pyaudio \
 iperf3 \
-psmisc
-
+psmisc 
 
 ####################################
 #              ROS                 #    
 ####################################
 
 # for apt-key
-RUN apt-get update && apt-get install -y dirmngr
+RUN apt update && apt install -y dirmngr
 
 # update source list and keyserver
 RUN sh -c 'echo "deb http://packages.ros.org/ros/ubuntu bionic main" > /etc/apt/sources.list.d/ros-latest.list'
-RUN apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
+
+RUN apt install -y curl
+RUN curl -s https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | apt-key add -
 
 # apt-get update again after changing source list and key
-RUN apt-get update && apt-get install -y ros-melodic-desktop-full
+RUN apt update && apt install -y ros-melodic-desktop-full
 
 # add path to .bashrc
 RUN echo "source /opt/ros/melodic/setup.bash" >> /root/.bashrc
 
 # dependencies for building ros pkgs
-RUN apt-get install -y python-rosdep \ 
+RUN apt install -y python-rosdep \ 
 python-rosinstall \
 python-rosinstall-generator \
 python-wstool build-essential \
 ros-melodic-geodesy \
-ros-melodic-joint-state-publisher-gui 
+ros-melodic-joint-state-publisher-gui \ 
+python3-pip \
+python3-numpy \
+python3-matplotlib \
+python-scipy
 # joint-state-publisher for rviz
 # geodesy for robot localization
+# matplotlib for visualization
+# scipy for signal_process
+
+RUN pip3 install pyyaml rospkg
+
 
 # rosdep init 
 RUN rosdep init
@@ -77,7 +87,9 @@ RUN ./build.sh
 
 # add path to .bashrc
 WORKDIR /root
-RUN echo "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
+RUN echo "PATH=\$PATH:/root/moos-ivp/bin:/root/arm64-nvidia/moos-ivp-agx/bin" >> ./.bashrc
 RUN echo ". /root/arm64-nvidia/catkin_ws/devel/setup.bash" >> ./.bashrc
 RUN echo "export ROS_IP=192.168.0.100" >> ./.bashrc   
-RUN echo "export ROS_MASTER_URI=http://192.168.0.167:11311" >> ./.bashrc
+RUN echo "export ROS_MASTER_URI=http://192.168.0.100:11311" >> ./.bashrc
+
+RUN rm -rf /var/lib/apt/lists/*
