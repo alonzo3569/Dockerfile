@@ -13,6 +13,7 @@ docker run -it \
 	   --runtime nvidia \
 	   -e DISPLAY=$DISPLAY \
 	   -v /tmp/.X11-unix/:/tmp/.X11-unix \
+	   -v /media/ual-agx/XavierSSD1000:/root/SSD \
 	   alonzo3569/arm64-nvidia:moos
 
 xhost -
