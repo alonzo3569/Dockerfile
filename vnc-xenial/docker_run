@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# for snesor test
+docker run -it --privileged --name vnc_imu_test --net=host alonzo3569/vnc-xenial:melodic
+
+# for non-sensor test
+#docker run -it --privileged --name test_image -p 6060:80 alonzo3569/vnc-xenial:melodic
