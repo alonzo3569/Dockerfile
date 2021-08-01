@@ -12,6 +12,9 @@ nmap         \
 libasound2-dev \
 alsa \
 python-pip \
+python3-pip \
+python3-numpy \
+python3-matplotlib \
 librapidxml-dev \
 iperf3 \
 terminator 
@@ -43,9 +46,15 @@ python-rosinstall-generator \
 python-wstool build-essential \
 ros-melodic-rosserial \
 ros-melodic-rosserial-arduino \
-ros-melodic-joint-state-publisher-gui
+ros-melodic-joint-state-publisher-gui \
+ros-melodic-joy
 # rosserial, rosserial-arduino for arduino
 # joint-state-publisher-gui for rviz
+# joy for joystick control
+
+RUN python3 -m pip install qbstyles
+RUN pip3 install pyyaml rospkg
+# qbstyles, pyyaml rospkg for visualization
 
 # rosdep init 
 RUN rosdep init
@@ -75,5 +84,8 @@ RUN ./build-ivp.sh
 
 # add path to .bashrc
 WORKDIR /root
-RUN echo -e "PATH=\$PATH:/root/moos-ivp/bin" >> ./.bashrc
-RUN echo -e ". /root/vnc-bionic/catkin_ws/devel/setup.bash" >> ./.bashrc
+RUN echo "PATH=\$PATH:/root/moos-ivp/bin:/root/vnc-bionic/moos-ivp-agx/bin" >> ./.bashrc
+RUN echo ". /root/vnc-bionic/catkin_ws/devel/setup.bash" >> ./.bashrc
+RUN echo "export ROS_MASTER_URI=http://localhost:11311" >> ./.bashrc
+
+RUN rm -rf /var/lib/apt/lists/*

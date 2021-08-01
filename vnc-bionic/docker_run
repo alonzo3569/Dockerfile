@@ -1,2 +1,6 @@
 #!/bin/bash
-docker run -it --privileged --name test_image -net=host alonzo3569/vnc-bionic:melodic_moos
+
+docker run -it \
+	   --privileged \
+	   --net=host \
+	   alonzo3569/vnc-bionic:melodic_moos
