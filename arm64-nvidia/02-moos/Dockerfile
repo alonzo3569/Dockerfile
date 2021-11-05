@@ -52,11 +52,13 @@ ros-melodic-joint-state-publisher-gui \
 python3-pip \
 python3-numpy \
 python3-matplotlib \
-python-scipy
+python-scipy \
+ros-melodic-multimaster-fkie
 # joint-state-publisher for rviz
 # geodesy for robot localization
 # matplotlib for visualization
 # scipy for signal_process
+# fkie for multimaster
 
 RUN pip3 install pyyaml rospkg
 
@@ -91,5 +93,6 @@ RUN echo "PATH=\$PATH:/root/moos-ivp/bin:/root/arm64-nvidia/moos-ivp-agx/bin" >>
 RUN echo ". /root/arm64-nvidia/catkin_ws/devel/setup.bash" >> ./.bashrc
 RUN echo "export ROS_IP=192.168.0.100" >> ./.bashrc   
 RUN echo "export ROS_MASTER_URI=http://192.168.0.100:11311" >> ./.bashrc
+RUN echo "export DISPLAY=:0.0" >> ./.bashrc
 
 RUN rm -rf /var/lib/apt/lists/*
