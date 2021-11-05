@@ -17,9 +17,11 @@ python3-numpy \
 python3-matplotlib \
 librapidxml-dev \
 iperf3 \
-terminator 
+terminator \
+psmisc 
 # iputils-ping for ping
 # librapidxml-dev for moos-ros-bridge
+# psmisc for killall
 
 
 ####################################
